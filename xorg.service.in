@@ -1,0 +1,24 @@
+
+#
+# Minimal Xorg service file - launches Xorg as a service unit
+#
+
+# The Xorg launch helper forks, launches Xorg and waits for Xorg to
+# accept incoming connections to $DISPLAY, and then exits. This
+# guarantees that services that require access to $DISPLAY during the
+# session don't start too early.
+#
+# If you implement a service that requires access to $DISPLAY, your
+# service unit file needs to include 'After=xorg.target'.
+
+[Unit]
+Description=Xorg server launch helper
+Before=xorg.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/xorg
+Type=forking
+ExecStart=@prefix@/bin/xorg-launch-helper $OPTIONS
+Restart=always
+RestartSec=10
+
