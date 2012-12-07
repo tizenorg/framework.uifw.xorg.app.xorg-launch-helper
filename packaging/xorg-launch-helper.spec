@@ -7,6 +7,7 @@ Group:		System/Base
 License:	GPLv2
 URL:		http://foo-projects.org/~sofar/%{name}
 Source0:	http://foo-projects.org/~sofar/%{name}/%{name}-%{version}.tar.gz
+Source1:	xorg.conf
 
 BuildRequires:	pkgconfig(systemd)
 Requires:	/usr/bin/Xorg
@@ -27,6 +28,9 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
 
+# temoprary HW configuration. it should be seperated.
+mkdir -p %{buildroot}/etc/sysconfig
+install -m 644 %{SOURCE1} %{buildroot}/etc/sysconfig/xorg
 
 %files
 %defattr(-,root,root,-)
@@ -34,4 +38,4 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_libdir}/systemd/user/xorg.service
 %{_libdir}/systemd/user/xorg.target
 %{_libdir}/systemd/user/xorg.target.wants/xorg.service
-
+/etc/sysconfig/xorg
