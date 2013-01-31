@@ -28,7 +28,7 @@ make %{?_smp_mflags}
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
 # temoprary HW configuration. it should be seperated.
 mkdir -p %{buildroot}/etc/sysconfig
@@ -39,9 +39,9 @@ ln -sf ../xorg_done.service %{buildroot}%{_libdir}/systemd/user/xorg.target.want
 %files
 %defattr(-,root,root,-)
 %{_bindir}/xorg-launch-helper
-%{_libdir}/systemd/user/xorg.service
-%{_libdir}/systemd/user/xorg_done.service
-%{_libdir}/systemd/user/xorg.target
-%{_libdir}/systemd/user/xorg.target.wants/xorg.service
-%{_libdir}/systemd/user/xorg.target.wants/xorg_done.service
+%{_prefix}/lib/systemd/user/xorg.service
+%{_prefix}/lib/systemd/user/xorg_done.service
+%{_prefix}/lib/systemd/user/xorg.target
+%{_prefix}/lib/systemd/user/xorg.target.wants/xorg.service
+%{_prefix}/lib/systemd/user/xorg.target.wants/xorg_done.service
 /etc/sysconfig/xorg
