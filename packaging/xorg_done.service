@@ -1,0 +1,7 @@
+[Unit]
+After=xorg.service
+Before=xorg.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/touch /tmp/.X.done
