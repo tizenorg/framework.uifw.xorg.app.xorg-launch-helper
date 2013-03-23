@@ -22,8 +22,7 @@ A wrapper to launch Xorg as a service in systemd environments.
 
 
 %build
-autoreconf
-%configure
+%reconfigure
 make %{?_smp_mflags}
 
 
