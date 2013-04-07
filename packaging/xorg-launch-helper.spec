@@ -32,8 +32,8 @@ make %{?_smp_mflags}
 # temoprary HW configuration. it should be seperated.
 mkdir -p %{buildroot}/etc/sysconfig
 install -m 644 %{SOURCE1} %{buildroot}/etc/sysconfig/xorg
-install -m 0644 %SOURCE2 %{buildroot}%{_libdir}/systemd/user/
-ln -sf ../xorg_done.service %{buildroot}%{_libdir}/systemd/user/xorg.target.wants
+install -m 0644 %SOURCE2 %{buildroot}%{_prefix}/lib/systemd/user/
+ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
 
 # "-sharevt" option will be removed (only) for Tizen Emulator temporarily
 # by the request from Tizen SDK (kernel) team.
