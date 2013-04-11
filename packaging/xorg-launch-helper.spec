@@ -1,6 +1,6 @@
 Name:		xorg-launch-helper
-Version:	3
-Release:	2
+Version:	4.0.1
+Release:	1
 Summary:	Xorg service helper
 
 Group:		System/Base

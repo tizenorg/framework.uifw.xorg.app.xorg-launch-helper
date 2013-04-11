@@ -18,6 +18,7 @@ Before=xorg.target
 [Service]
 EnvironmentFile=-/etc/sysconfig/xorg
 Type=forking
+OOMScoreAdjust=-1000
 ExecStart=@prefix@/bin/xorg-launch-helper $OPTIONS
 Restart=always
 RestartSec=10
