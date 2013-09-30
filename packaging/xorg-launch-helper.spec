@@ -27,6 +27,8 @@ make %{?_smp_mflags}
 
 
 %install
+mkdir -p %{buildroot}/usr/share/license
+cp -af COPYING %{buildroot}/usr/share/license/%{name}
 %make_install
 
 # temoprary HW configuration. it should be seperated.
@@ -43,6 +45,7 @@ sed -i 's/-sharevts//g' %{buildroot}/etc/sysconfig/xorg
 
 %files
 %defattr(-,root,root,-)
+/usr/share/license/%{name}
 %{_bindir}/xorg-launch-helper
 %{_prefix}/lib/systemd/user/xorg.service
 %{_prefix}/lib/systemd/user/xorg_done.service
