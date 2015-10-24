@@ -1,3 +1,9 @@
-* Tue Mar 19 2013 Ilkka Aulomaa <ilkkax.aulomaa@intel.com> accepted/trunk/20130318.193318@14403fc
-- Fix for TDIS-4183. Add dpmsphone parameter for X when using systemd startup mechanism.
+* Wed Sep 18 2013 Chengwei Yang <chengwei.yang@intel.com>
+- Fix activate xorg.service failed
+
+* Sat May 11 2013 Anas Nashif <anas.nashif@intel.com> submit/tizen/20130510.142059@d1bba9b
+- Set license using %license
+
+* Fri May 10 2013 Anas Nashif <anas.nashif@intel.com> 858f60f
+- Update to v4
 

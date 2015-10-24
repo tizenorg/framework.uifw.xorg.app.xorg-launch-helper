@@ -4,9 +4,9 @@
 #
 
 # The Xorg launch helper forks, launches Xorg and waits for Xorg to
-# accept incoming connections to $DISPLAY, and then exits. This
-# guarantees that services that require access to $DISPLAY during the
-# session don't start too early.
+# accept incoming connections to $DISPLAY, and then signals READY
+# to systemd. This guarantees that services that require access to
+# $DISPLAY during the session don't start too early.
 #
 # If you implement a service that requires access to $DISPLAY, your
 # service unit file needs to include 'After=xorg.target'.
@@ -16,10 +16,10 @@ Description=Xorg server launch helper
 Before=xorg.target
 
 [Service]
+TTYPath=/dev/tty2
+StandardInput=tty-force
 EnvironmentFile=-/etc/sysconfig/xorg
-Type=forking
+Environment=XORG_WATCH_DOG=1
+Type=notify
 OOMScoreAdjust=-1000
 ExecStart=@prefix@/bin/xorg-launch-helper $OPTIONS
-Restart=always
-RestartSec=10
-
